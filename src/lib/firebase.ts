@@ -25,6 +25,29 @@ export async function getRegistrations () {
   });
 }
 
+export async function getWeeklyRegistrations (startDate: Date, endDate: Date) {
+  let registrationsRef = collection(db, FIREBASE_COLLECTION.REGISTRATION);
+
+  const q = query(registrationsRef, where("registrationDate", ">=", startDate), where("registrationDate", "<=", endDate));
+  const results = await getDocs(q);
+  return results.docs.map((doc) => {
+    return {
+      userId: doc.id,
+      registrationDate: doc.data().registrationDateString,
+      name: doc.data().name,
+      introducer: doc.data().introducer,
+      gender: doc.data().gender,
+      marriageStatus: doc.data().marriageStatus,
+      birthday: doc.data().birthday,
+      phoneNumber: doc.data().phoneNumber,
+      faithExperience: doc.data().faithExperience,
+      postcode: doc.data().postcode,
+      address: doc.data().fullAddress,
+      profileUrl: doc.data().profileUrl,
+    };
+  });
+}
+
 export async function getUserById (userId: string) {
   const docRef = doc(db, FIREBASE_COLLECTION.REGISTRATION, userId);
   const result = await getDoc(docRef);

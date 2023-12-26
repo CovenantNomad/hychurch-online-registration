@@ -1,11 +1,10 @@
 'use client'
 
-import { DataTable } from "./DataTable";
-import { columns } from "./columns";
 import { useQuery } from "@tanstack/react-query";
 import { getRegistrations } from "@/lib/firebase";
 import { Skeleton } from "@/components/ui/skeleton";
-import { TableHeader } from "@/components/ui/table";
+import { DataTable } from "../../../DashboardDataTable/DataTable";
+import { columns } from "@/components/DashboardDataTable/columns";
 import EmptyState from "@/components/EmptyState/EmptyState";
 
 type TotalRosterProps = {}

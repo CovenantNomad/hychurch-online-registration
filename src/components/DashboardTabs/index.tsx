@@ -1,10 +1,11 @@
 'use client'
 
-import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import TotalRoster from "../Dashboard/Section/TotalRoster";
-import { RecoilState, useRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { dashboardTabsState } from "@/store/dashboardTabsState";
+import WeeklyRegistration from "../Dashboard/Section/WeeklyRegistration/WeeklyRegistration";
+
 
 type DashboardTabsProps = {}
 
@@ -32,6 +33,9 @@ const DashboardTabs = ({}: DashboardTabsProps) => {
           데이터 다운로드 (개발 중)
         </TabsTrigger>
       </TabsList>
+      <TabsContent value="weekly" className="py-4">
+        <WeeklyRegistration />
+      </TabsContent>
       <TabsContent value="totally" className="py-4">
         <TotalRoster />
       </TabsContent>
