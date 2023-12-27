@@ -4,7 +4,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import TotalRoster from "../Dashboard/Section/TotalRoster";
 import { useRecoilState } from "recoil";
 import { dashboardTabsState } from "@/store/dashboardTabsState";
-import WeeklyRegistration from "../Dashboard/Section/WeeklyRegistration/WeeklyRegistration";
+import WeeklyRegistration from "../Dashboard/Section/WeeklyRegistration";
+import MonthlyRegistration from "../Dashboard/Section/MonthlyRegistration";
+import Overview from "../Dashboard/Section/Overview";
 
 
 type DashboardTabsProps = {}
@@ -29,12 +31,15 @@ const DashboardTabs = ({}: DashboardTabsProps) => {
         <TabsTrigger value="totally">
           전체 등록명단
         </TabsTrigger>
-        <TabsTrigger value="download" disabled>
-          데이터 다운로드 (개발 중)
-        </TabsTrigger>
       </TabsList>
+      <TabsContent value="overview" className="py-4">
+        <Overview />
+      </TabsContent>
       <TabsContent value="weekly" className="py-4">
         <WeeklyRegistration />
+      </TabsContent>
+      <TabsContent value="monthly" className="py-4">
+        <MonthlyRegistration />
       </TabsContent>
       <TabsContent value="totally" className="py-4">
         <TotalRoster />
