@@ -1,21 +1,22 @@
 'use client'
 
 import { getWeeklyRegistrations } from "@/lib/firebase";
-import { getStartAndEndDateOfThisWeek } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
 import { DataTable } from "../../../DashboardDataTable/DataTable";
 import { columns } from "../../../DashboardDataTable/columns";
 import { Skeleton } from "@/components/ui/skeleton";
 import EmptyState from "@/components/EmptyState/EmptyState";
+import { useRecoilValue } from "recoil";
+import { dateState } from "@/store/dateState";
 
 type ThisWeekRegistrationProps = {}
 
 const WeeklyRegistration = ({}: ThisWeekRegistrationProps) => {
-  const { startDate, endDate } = getStartAndEndDateOfThisWeek();
+  const { weekStartDate, weekEndDate } = useRecoilValue(dateState)
 
   const {isLoading, isFetching, data} = useQuery({ 
     queryKey: ['getWeeklyRegistrations'], 
-    queryFn: () => getWeeklyRegistrations(startDate, endDate), 
+    queryFn: () => getWeeklyRegistrations(weekStartDate, weekEndDate), 
     staleTime: 10 * 60 * 1000
   })
 
@@ -37,7 +38,7 @@ const WeeklyRegistration = ({}: ThisWeekRegistrationProps) => {
         <>
           <div className="flex justify-end mb-3">
             <div className="px-4 py-2 border rounded-lg">
-              <span className="text-sm text-gray-900">{startDate.toLocaleDateString('KR-kr')} - {endDate.toLocaleDateString('KR-kr')}</span>
+              <span className="text-sm text-gray-900">{weekStartDate.toLocaleDateString('KR-kr')} - {weekEndDate.toLocaleDateString('KR-kr')}</span>
             </div>
           </div>
           {data ? (
