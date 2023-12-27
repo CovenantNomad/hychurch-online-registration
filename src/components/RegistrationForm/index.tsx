@@ -589,10 +589,10 @@ const RegistrationForm = ({ setUserName, setIsSubmitted, setIsSubmitSuccessful, 
                             htmlFor="file-upload"
                             className="relative cursor-pointer rounded-md bg-white font-semibold text-blue-700"
                           >
-                            <span>이미지 첨부</span>
+                            <span className="border px-2 py-2 rounded-md">이미지 첨부</span>
                             <input id="file-upload" name="file-upload" type="file" accept='image/*' className="sr-only" onChange={handleFileChange} required />
                           </label>
-                          <p className="text-xs leading-5 text-gray-600">PNG, JPG, WEBP up to 10MB</p>
+                          <p className="text-xs leading-5 text-gray-600 mt-2">PNG, JPG, WEBP up to 10MB</p>
                         </div>
                       )}
                     
