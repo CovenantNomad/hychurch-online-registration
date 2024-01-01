@@ -109,11 +109,11 @@ const ProfileCard = ({ data }: ProfileCardProps) => {
                 </div>
                 <div className="md:col-span-4 -mt-8">
                   <div className="mt-2">
-                    <div>
-                      <span className="block w-20 font-medium leading-6 text-gray-900 lg:inline-block">
+                    <div className="flex flex-col lg:flex-row">
+                      <span className="block w-20 font-medium leading-6 text-gray-900">
                         주소
                       </span>
-                      <span className="leading-6 text-gray-900">({data.postcode}) {data.address}</span>
+                      <span className="block leading-6 text-gray-900">({data.postcode}) {data.address}</span>
                     </div>
                   </div>
                 </div>
