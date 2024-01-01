@@ -26,9 +26,7 @@ import UploadFilePreview from "../UploadFilePreview/UploadFilePreview"
 import Modal from "../Modal/Modal";
 // firebase
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
-import { db, storage } from '@/configs/firebaseConfigs'
-import { addDoc, collection } from 'firebase/firestore'
-import { FIREBASE_COLLECTION } from '@/types/firebase'
+import { storage } from '@/configs/firebaseConfigs'
 // utils
 import { format } from "date-fns"
 import { cn } from '@/lib/utils';
@@ -105,8 +103,8 @@ const RegistrationForm = ({ setUserName, setIsSubmitted, setIsSubmitSuccessful, 
         const registerForm = {
           registrationDate: data.registrationDate, 
           registrationDateString: dayjs(data.registrationDate).format('YYYY-MM-DD'),
-          yearOfRegistration: dayjs(data.registrationDate).get('year').toString(),
-          monthOfRegistration: (dayjs(data.registrationDate).get('month')+1).toString(), 
+          yearOfRegistration: dayjs(data.registrationDate).get('year').toString().padStart(2, '0'),
+          monthOfRegistration: (dayjs(data.registrationDate).get('month')+1).toString().padStart(2, '0'),
           name: data.name, 
           introducer: data.introducer, 
           gender: data.gender, 
